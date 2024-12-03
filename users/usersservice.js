@@ -17,13 +17,22 @@ class usersservice {
        else {
         return ('login failed ')
        }
-
-
-
+}
+async signup(user){
+    const  {username, password} = user
+    const found = this.users.find(user => user.username === username )
+    if (!found){
+        this.users.push({username: username, password: password})
+        return{message:'success' ,
+            users: this.users}
         
-
         
     }
+    else {
+        return('already in use')
+    }
 
+};
 }
+
 module.exports = new usersservice();
